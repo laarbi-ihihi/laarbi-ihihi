@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="الصفحة الرسمية للفنان العربي إحيحي - روابط يوتيوب، إنستغرام، سبوتيفاي وجميع المنصات.">
+    <title>Laarbi Ihihi | Official Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #050816;
+            --glass: rgba(255, 255, 255, 0.08);
+            --border: rgba(255, 255, 255, 0.18);
+            --text: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+
+            display: flex;
+            justify-content: center;
+
+            align-items: flex-start;
+            /* ✅ بدل center */
+
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+
+        @keyframes move {
+            0% {
+                transform: translate(-10%, -10%) scale(1)
+            }
+
+            100% {
+                transform: translate(10%, 10%) scale(1.2)
+            }
+        }
+
+        .bio {
+            margin-top: 10px;
+            font-size: 14px;
+            line-height: 1.7;
+            opacity: 0.9;
+            text-align: center;
+            padding: 0 15px;
+            font-weight: 300;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 520px;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            padding: 25px;
+            backdrop-filter: blur(25px);
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            margin-bottom: 10px;
+            box-shadow:
+                0 10px 40px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                0 0 40px rgba(255, 255, 255, 0.15);
+            transition: 0.4s ease;
+        }
+
+        .avatar:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: brightness(1.2);
+        }
+
+        h1 {
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 26px;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: none;
+
+            background: linear-gradient(90deg, #ffffff, #bfbfbf, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.15);
+
+            animation: glowName 3s ease-in-out infinite alternate;
+        }
+
+
+
+        .socials {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .socials a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+        }
+
+        .socials a:hover {
+            transform: scale(1.1);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .link {
+            display: flex;
+            justify-content: center;
+            /* 👈 هذا المهم */
+            align-items: center;
+            padding: 18px;
+            font-size: 15px;
+            margin: 10px 0;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: white;
+            transition: .3s;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .link:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .link:active {
+            transform: scale(0.97) translateY(2px);
+        }
+
+        .phone {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--border);
+        }
+
+        /* 👇 هنا تضيف */
+        .socials svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .phone {
+            position: relative;
+            cursor: pointer;
+            overflow: visible;
+        }
+
+        /* 🍎 Tooltip مثل iPhone */
+        .copied-msg {
+            position: absolute;
+            top: -55px;
+            left: 50%;
+            transform: translateX(-50%) scale(0.8);
+            background: rgba(30, 30, 30, 0.95);
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 12px;
+            font-size: 12px;
+            opacity: 0;
+            transition: all 0.25s ease;
+            pointer-events: none;
+            backdrop-filter: blur(10px);
+        }
+
+        /* السهم الصغير تحت الفقاعة */
+        .copied-msg::after {
+            content: "";
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px;
+            border-style: solid;
+            border-color: rgba(30, 30, 30, 0.95) transparent transparent transparent;
+        }
+
+        /* عند النسخ */
+        .phone.active .copied-msg {
+            opacity: 1;
+            transform: translateX(-50%) scale(1);
+            top: -65px;
+        }
+
+        .bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            /* ✅ */
+            height: 100vh;
+            /* ✅ */
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        iframe {
+            border-radius: 20px;
+            margin-top: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .about {
+            margin-top: 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--border);
+            overflow: hidden;
+        }
+
+        .about summary {
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 500;
+            list-style: none;
+        }
+
+        .about summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .about summary:hover {
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .about-content {
+            padding: 0 15px;
+            line-height: 1.8;
+            font-size: 14px;
+
+            max-height: 0;
+            overflow: hidden;
+
+            opacity: 0;
+            transform: translateY(-15px) scale(0.98);
+            filter: blur(6px);
+
+            transition:
+                max-height 0.6s ease,
+                opacity 0.4s ease,
+                transform 0.4s ease,
+                filter 0.4s ease,
+                padding 0.3s ease;
+        }
+
+        /* عند الفتح */
+        .about[open] .about-content {
+            max-height: 300px;
+            /* 👈 مهم */
+            overflow-y: auto;
+            /* 👈 scroll */
+
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            filter: blur(0);
+
+            padding: 15px;
+        }
+
+        .about-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .about-content::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .about-content::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+
+        .about-content::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .card:hover {
+            box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+        }
+
+        .stats {
+            font-size: 13px;
+            opacity: 0.8;
+            margin: 8px 0 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .card {
+            animation: fadeUp 0.8s ease;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes glowName {
+            from {
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            }
+
+            to {
+                text-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+            }
+        }
+
+        .link {
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .container {
+            animation: fadeUp 1s ease;
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 22px;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .link {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <video autoplay muted loop playsinline class="bg-video">
+        <source src="ve.mp4" type="video/mp4">
+    </video>
+
+    <div class="container">
+
+        <div class="card">
+            <img class="avatar" src="profile.jpg">
+            <h1>Laarbi Ihihi</h1>
+            <div class="stats">
+                👥 +50K متابع | 🎶 +600 أغنية
+            </div>
+            <p class="bio">
+                أهلاً وسهلاً بكم في القناة الرسمية للفنان العربي احيحي! هنا تتناغم الأصوات الأمازيغية مع الإحساس الأصيل.
+                استمتعوا بكل نغمة وكل لحظة!
+            </p>
+            <iframe width="100%" height="200" src="https://www.youtube.com/embed/A2wS9wu0wwM?mute=1" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+            <a class="link" href="https://www.youtube.com/watch?v=A2wS9wu0wwM" target="_blank">
+                🔥 Watch on YouTube
+            </a>
+            <div class="socials">
+
+                <a href="https://www.instagram.com/laarbi.ihihi" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 0 5 5 5 5 0 0 0-5-5zm0 8a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm4.5-8.5a1 1 0 1 1 1-1 1 1 0 0 1-1 1z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.tiktok.com/@larbi.ihihi" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M16.5 3c.6 2.7 2.2 4.4 4.5 4.7v3.2c-1.7.1-3.2-.4-4.5-1.2v5.6c0 3.9-3.2 7.1-7.1 7.1S2.3 19.2 2.3 15.3s3.2-7.1 7.1-7.1c.4 0 .8 0 1.2.1v3.4c-.4-.1-.8-.2-1.2-.2-2.1 0-3.8 1.7-3.8 3.8s1.7 3.8 3.8 3.8 3.8-1.7 3.8-3.8V3h3.5z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.youtube.com/@larbiihihi" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M21.8 8.1a3 3 0 0 0-2.1-2.1C17.9 5.5 12 5.5 12 5.5s-5.9 0-7.7.5A3 3 0 0 0 2.2 8.1 31.3 31.3 0 0 0 1.7 12a31.3 31.3 0 0 0 .5 3.9 3 3 0 0 0 2.1 2.1c1.8.5 7.7.5 7.7.5s5.9 0 7.7-.5a3 3 0 0 0 2.1-2.1A31.3 31.3 0 0 0 22.3 12a31.3 31.3 0 0 0-.5-3.9zM10 15.2V8.8L15.5 12z" />
+                    </svg>
+                </a>
+
+                <a href="https://open.spotify.com/artist/5ehuPvy4v6GRJGBjYxkFCd" target="_blank"
+                    rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2.5a9.5 9.5 0 1 0 9.5 9.5A9.5 9.5 0 0 0 12 2.5z" />
+                    </svg>
+                </a>
+
+                <a href="https://www.facebook.com/larbi.ihih" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M22 12a10 10 0 1 0-11.6 9.9v-7H7.9v-2.9h2.5V9.8c0-2.5 1.5-3.9 3.8-3.9 1.1 0 2.3.2 2.3.2v2.5h-1.3c-1.3 0-1.7.8-1.7 1.6v1.9h2.9l-.5 2.9h-2.4v7A10 10 0 0 0 22 12z" />
+                    </svg>
+                </a>
+
+            </div>
+
+            <a class="link" href="https://www.tiktok.com/@larbi.ihihi" target="_blank"
+                rel="noopener noreferrer">TikTok</a>
+            <a class="link" href="https://www.instagram.com/laarbi.ihihi" target="_blank"
+                rel="noopener noreferrer">Instagram</a>
+            <a class="link" href="https://www.youtube.com/@larbiihihi" target="_blank"
+                rel="noopener noreferrer">YouTube</a>
+            <a class="link" href="https://open.spotify.com/artist/5ehuPvy4v6GRJGBjYxkFCd" target="_blank"
+                rel="noopener noreferrer">Spotify</a>
+            <a class="link" href="https://www.facebook.com/larbi.ihih" target="_blank"
+                rel="noopener noreferrer">Facebook</a>
+            <a class="link" href="https://music.apple.com/fr/artist/laarbi-ihihi/1774271395" target="_blank"
+                rel="noopener noreferrer">Apple Music</a>
+            <a class="link" href="https://play.anghami.com/artist/22389278" target="_blank"
+                rel="noopener noreferrer">Anghami</a>
+            <details class="about">
+                <summary>📖 نبذة عن الفنان العربي إحيحي</summary>
+
+                <div class="about-content">
+                    <p>
+                        الرايس العربي إحيحي (العربي الطريح)، من مواليد سنة 1965 بدوار إيمكراد أيت جوجكل بإقليم الصويرة،
+                        نشأ في أسرة فنية عريقة متأثرا بعمه الرايس لحسن أطريح، حيث شرع في نظم أولى قصائده الغنائية وهو في
+                        العاشرة من العمر، ليبدأ مساره الفني سنة 1976 متأثرا بقامات فن الروايس، مثل الرايس محمد الدمسيري،
+                        والرايس أحمد بيزماون…
+
+                        <br><br>
+
+                        وفي سنة 1985، أصدر الرايس العربي احيحي أول أغانيه التي حملت عنوان “أذنب بات لقيصت سفلت دانتي”،
+                        من تأليفه وألحانه، وفي سنة 1993 أصدر ألبومه الغنائي “مايرا أوكضيض أومان”، والذي لاقى نجاحا
+                        جماهيريا كبيرا وأكسب الفنان العربي احيحي مكانة بارزة ضمن مشاهير فن الروايس.
+
+                        <br><br>
+
+                        وقد شق الرايس العربي إحيحي مسارا فنيا متميزا، حيث لاقت أغانيه شهرة واسعة لدى الجمهور الأمازيغي،
+                        معبرا في أغانيه عن انتمائه للمدرسة الفنية العريقة...
+
+                        <br><br>
+
+                        ويمتلك الرايس العربي إحيحي في سجله رصيدا ضخما من الأغاني يتجاوز 600 أغنية تتوزع على أكثر من 100
+                        ألبوم...
+
+                        <br><br>
+
+                        وفي سنة 2025، خاض الرايس العربي إحيحي تجربة جديدة في مساره الفني من خلال أغنية “أهياوا إلي
+                        العقل”...
+
+                        <br><br>
+
+                        وفي مجمل القول، فإن الرايس العربي إحيحي يعتبر بحق أسطورة حية في فن الروايس...
+                    </p>
+                </div>
+            </details>
+
+            <div class="phone" onclick="copyNumber()">
+                <span class="copy-text">📞 +212 661-669181</span>
+                <span class="copied-msg">تم النسخ ✅</span>
+            </div>
+
+        </div>
+
+    </div>
+    <script>
+        function copyNumber() {
+            const number = "+212661669181";
+
+            navigator.clipboard.writeText(number);
+
+            const phone = document.querySelector(".phone");
+            phone.classList.add("active");
+
+            setTimeout(() => {
+                phone.classList.remove("active");
+            }, 1500);
+        }
+    </script>
+
+</body>
+
+</html>
